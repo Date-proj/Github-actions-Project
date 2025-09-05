@@ -1,25 +1,10 @@
 name: CICD Pipeline
 
-
-services:
-  postgres:
-    image: postgres:15
-    ports:
-      - 5432:5432
-    env:
-      POSTGRES_DB: Dateproject
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
-    options: >-
-      --health-cmd="pg_isready -U postgres"
-      --health-interval=10s
-      --health-timeout=5s
-      --health-retries=5
-
 on:
   push:
     branches: [ "main" ]
- 
+
+
 
 jobs:
   compile:
@@ -34,8 +19,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+
+    - name: postgres
+      image: postgres:15
+      ports: - 5432:5432
+      
+    env:
+      POSTGRES_DB: karthi4310
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234   
+    
+    #- name: Build with Maven
+      #run: mvn -B package --file pom.xml
 
 
   Security-check:
