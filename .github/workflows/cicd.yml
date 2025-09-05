@@ -21,11 +21,11 @@ jobs:
         cache: maven
 
     - name: postgres
-      image: postgres:15
-      ports: - 5432:5432
+      image: postgres: 17
+      ports: 5432
       
     env:
-      POSTGRES_DB: karthi4310
+      POSTGRES_DB: Dateproject
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234   
     
