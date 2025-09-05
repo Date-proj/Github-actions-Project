@@ -20,17 +20,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: postgres
-      postgres: 17
-      ports: 5432
-      
-    env:
-      POSTGRES_DB: Dateproject
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234   
-    
-    #- name: Build with Maven
-      #run: mvn -B package --file pom.xml
+     - name: Build with Maven
+       run: mvn -B package --file pom.xml
 
 
   Security-check:
